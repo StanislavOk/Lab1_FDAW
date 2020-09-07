@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="Lab1App">
+<head>
+    <style>
+        .multiplication__table, tr, td {
+            border: 2px solid black;
+            text-align: center;
+            padding: 10px;
+        }
+
+            tr:first-child, td:first-child {
+                background-color: dimgrey;
+                color: white;
+                font-weight: bold;
+            }
+    </style>
+    <title>Lab1</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script>
+        var app = angular.module("Lab1App", []);
+        app.controller("Lab1AppCtrl", function ($scope) {
+            $scope.rows = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+            $scope.cols = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        });
+    </script>
+</head>
+<body>
+    <div ng-controller="Lab1AppCtrl">
+        <h3>Multiplication table</h3>
+        <table class="multiplication__table">
+            <tbody>
+                <tr ng-repeat="row in rows">
+                    <td ng-repeat="col in cols">{{col * row}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
