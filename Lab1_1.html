@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <div ng-app="myApp" ng-controller="personCtrl">
+
+        a: <input type="text" ng-model="a"><br>
+        b: <input type="text" ng-model="b"><br>
+        <br>
+        Summ: {{summa()}}
+        <br>
+        Difference: {{raznost()}}
+        <br>
+        Division: {{delenie()}}
+        <br>
+        Multiplication: {{umnojenie()}}
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('personCtrl', function ($scope) {
+            $scope.a = 1;
+            $scope.b = 1;
+            $scope.summa = function () {
+                return Number($scope.a) + Number($scope.b);
+            };
+            $scope.raznost = function () {
+                return $scope.a - $scope.b;
+            };
+            $scope.delenie = function () {
+                return $scope.a / $scope.b;
+            }
+            $scope.umnojenie = function () {
+                return $scope.a * $scope.b;
+            }
+        });
+    </script>
+</body>
+</html>
