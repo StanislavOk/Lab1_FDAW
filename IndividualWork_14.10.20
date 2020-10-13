@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <style>
+        body {
+            background-color: antiquewhite;
+        }
+        .box {
+            position: relative;
+            display: block;
+        }
+        .family__member {
+            border: 2px solid black;
+            width: 150px;
+            height: 190px;
+            color: brown;
+            font-size: 18px;
+            padding: 10px;
+            font-weight: bold;
+            background-color:#F5DEB3;
+            text-align: center;
+        }
+        .family__member_1 {
+            position: absolute;
+            margin: 30px 890px;
+            top:30px;
+        }
+        .family__member_2 {
+            position: absolute;
+            margin: 30px 1150px;
+            top: 240px;
+        }
+        .family__member_3 {
+            margin: 30px 630px;
+            position: absolute;
+            top: 240px;
+        }
+        .family__member_4 {
+            position: absolute;
+            margin: 30px 505px;
+            top: 500px;
+        }
+        .family__member_5 {
+            position: absolute;
+            margin: 30px 745px;
+            top: 500px;
+        }
+        .family__member_6 {
+            position: absolute;
+            margin: 30px 1270px;
+            top: 500px;
+        }
+        .family__member_7 {
+            position: absolute;
+            margin: 30px 1030px;
+            top: 500px;
+        }
+        .inp {
+            display: block;
+            width: 50px;
+            margin: 0px auto;
+        }
+        .name, .age {
+            color: black;
+            font-size: 12px;
+        }
+
+        #myBtn {
+            position: absolute;
+            display: block;
+            background-color: brown ;
+            color: white;
+            padding: 12px 16px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            top: 40px;
+        }
+
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 100px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        .modal-content {
+            position: relative;
+            background-color: #DEB887;
+            margin: auto;
+            padding: 0;
+            border: 5px solid brown;
+            width: 20%;
+            text-align: center;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+            -webkit-animation-name: animatetop;
+            -webkit-animation-duration: 0.4s;
+            animation-name: animatetop;
+            animation-duration: 0.4s
+        }
+
+        @-webkit-keyframes animatetop {
+            from {top:-300px; opacity:0} 
+            to {top:0; opacity:1}
+        }
+
+        @keyframes animatetop {
+            from {top:-300px; opacity:0}
+            to {top:0; opacity:1}
+        }
+
+        .close {
+            color: white;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover, .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal-header {
+            padding: 2px 16px;
+            background-color: 	#CD853F;
+            color: white;
+        }
+
+        .modal-body {padding: 2px 16px;}
+
+        .modal-footer {
+            padding: 2px 16px;
+            background-color: #CD853F;
+            color: white;
+        }
+        .mybtn{
+            position: absolute;
+            display: block;
+            background-color: brown ;
+            color: white;
+            padding: 12px 16px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            top: 100px;
+        }
+
+        .friends {
+            border-collapse: collapse;
+            display: block;
+            position: absolute;
+            top: 250px;
+            text-align: center;
+        }
+        .friends th {
+            border-bottom: 1px solid;
+        }
+        .friends td, .friends th {
+            border-left: 1px solid;
+            padding: 5px 10px;
+        }   
+        .friends td:first-child, .friends th:first-child {
+            border-left: none;
+        }
+        .selectMode{
+            top: 200px;
+            position: absolute;
+        }
+        #btnUns{
+            position: absolute;
+            top: 220px;
+            margin-left: 10px;
+        }
+        .posTable {
+            top: 520px;
+            margin-left: 55px;
+            margin-top: 20px;
+        }
+        .inp_ser{
+            position:absolute;
+            top: 495px;
+        }
+        @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+.login-page {
+  width: 360px;
+  padding: 8% 0 0;
+  margin: auto;
+}
+.form {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.form input {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+.form button {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: brown;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+  font-weight: bold;
+}
+.form button:hover,.form button:active,.form button:focus {
+  background: burlywood;
+}
+
+.form .register-form {
+  display: none;
+}
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 300px;
+  margin: 0 auto;
+}
+.container:before, .container:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.container .info {
+  margin: 50px auto;
+  text-align: center;
+}
+.container .info h1 {
+  margin: 0 0 15px;
+  padding: 0;
+  font-size: 36px;
+  font-weight: 300;
+  color: #1a1a1a;
+}
+.container .info span {
+  color: #4d4d4d;
+  font-size: 12px;
+}
+.container .info span a {
+  color: #000000;
+  text-decoration: none;
+}
+.container .info span .fa {
+  color: #EF3B3A;
+}
+
+    </style>
+</head>
+
+<body ng-app="app" ng-controller="Controller">
+
+<div ng-hide="isLogined" class="login-page">
+    <div class="form">
+        <form ng-submit="submit()" class="login-form">
+        <input type="text" placeholder="username" ng-model="login" required/>
+        <input type="password" placeholder="password" ng-model="password" required/>
+        <button type="submit">login</button>
+        </form>
+    </div>
+</div>
+
+<div ng-show="isLogined">
+    <div>
+    <button id="myBtn">Информация о дереве</button>
+    <div id="myModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+        <span class="close">&times;</span>
+        <h2>Информация</h2>
+        </div>
+        <div class="modal-body">
+        <p ng-model="qty"><b>Количество членов семьи:<b> {{qty}}</p>
+        </div>
+        <div class="modal-footer"></div>
+    </div>
+    </div>
+
+    <div ng-hide="showing" ng-repeat="member in familyMembers">
+        <div ng-class="member.styleClass">
+            {{member.memberName}}
+        </br>
+           <span class="name">Имя:</span><input ng-pattern="/^[a-zA-Z]*$/" class="inp" type="text" name="name" ng-model="member.name" required>
+           <span class="age">Возраст:</span><input ng-pattern="/^[0-9]*$/" class="inp" type="number" name="age" ng-model="member.age" required>
+           <span class="name">Года жизни:</span><input class="inp" type="text" name="years" ng-model="member.years" required>
+           <input ng-click="onDelete($index); UpdateQty();" type="button" value="Удалить">
+        </div>
+    </div>
+
+    <input ng-hide="showing" class="mybtn" type="button" ng-click="changeFlag()" value="Показать результат">
+    <input ng-show="showing" class="mybtn" type="button" ng-click="changeFlag()" value="Вернуться к редактированию">
+
+    <div ng-show="showing" ng-repeat="member in familyMembers">
+        <div ng-class="member.styleClass">
+            {{member.memberName}}
+        </br>
+           <p class="name" style="font-size: 16px;">Имя: {{member.name}}</p>
+           <p class="age" style="font-size: 16px;">Возраст: {{member.age}}</p>
+           <p class="name" style="font-size: 16px;">Года жизни:<P>{{member.years}}</p></p>
+        </div>
+    </div>
+
+    <div>
+        <button id="btnUns" ng-click="propertyName = null; reverse = false">Убрать сортировку</button>
+        <table class="friends">
+          <tr>
+            <th>
+              <button ng-click="sortBy('name')">Имя</button>
+              <span class="sortorder" ng-show="propertyName === 'name'" ng-class="{reverse: reverse}"></span>
+            </th>
+            <th>
+              <button ng-click="sortBy('age')">Возраст</button>
+              <span class="sortorder" ng-show="propertyName === 'age'" ng-class="{reverse: reverse}"></span>
+            </th>
+          </tr>
+          <tr ng-repeat="member in familyMembers | orderBy:propertyName:reverse">
+            <td>{{member.name}}</td>
+            <td>{{member.age}}</td>
+          </tr>
+        </table>
+      </div>
+
+    <div class="inp_ser">
+    <label>Поиск: <input type="text" ng-model="searchText"></label>
+    </div>
+    <table class="friends posTable">
+       <tr><th>Имя</th><th>Возраст</th></tr>
+       <tr ng-repeat="member in familyMembers | filter:searchText">
+         <td>{{member.name}}</td>
+          <td>{{member.age}}</td>
+        </tr>
+    </table>
+</div>
+    <script>
+        var modal = document.getElementById('myModal');
+        var btn = document.getElementById("myBtn");
+        var span = document.getElementsByClassName("close")[0];
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+        window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+            }
+        }
+
+        var app = angular.module('app', []);
+
+        app.factory('dataService', function(){
+            return{
+                familyMembers: [
+                {memberName: "Я", id: 0, name: "Rose", years: "1940", age: 60,  styleClass: "family__member family__member_1"}, 
+                {memberName: "Мама", id: 1, name: "Heidi", years: "1983", age: 35, styleClass: "family__member family__member_2"}, 
+                {memberName: "Папа", id: 2, name: "Bethany", years: "1944", age: 45, styleClass: "family__member family__member_3"}, 
+                {memberName: "Дедушка по папе", id: 3, name: "Hurriet", years:"1947", age: 29, styleClass: "family__member family__member_4"}, 
+                {memberName: "Бабушка по папе", id: 4, name: "Ruby", years:"1956", age: 88, styleClass: "family__member family__member_5"}, 
+                {memberName: "Дедушка по маме", id: 5, name: "Jessica", years:"1939", age: 32, styleClass: "family__member family__member_6"}, 
+                {memberName: "Бабушка по маме", id: 6, name: "Isabella", years:"1952", age: 10, styleClass: "family__member family__member_7"}, 
+            ]};
+        });
+
+        app.controller('Controller', function ($scope, dataService) {
+            $scope.familyMembers = dataService.familyMembers;
+
+            $scope.onDelete = function(index) {
+               $scope.familyMembers.splice(index,1);
+               console.log($scope.familyMembers);
+            };
+
+            $scope.qty = $scope.familyMembers.length;
+            $scope.UpdateQty = function() {
+                $scope.qty = $scope.familyMembers.length;
+            }
+            
+            $scope.isLogined = false;
+            $scope.showing = false;
+            
+            $scope.password = "";
+            $scope.login = "";
+
+            $scope.changeFlag = function() {
+                $scope.showing = !$scope.showing;
+            }
+
+            $scope.submit = function() {
+                if($scope.password === "12345" && $scope.login === "Stas")
+                {
+                    $scope.isLogined = true;
+                }
+                else window.alert("Вы вводите неверные данные, повторите ввод !!!"); 
+            }
+
+            $scope.propertyName = 'age';
+            $scope.reverse = true;
+
+            $scope.sortBy = function(propertyName) {
+             $scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
+             $scope.propertyName = propertyName;
+            };
+        });
+    </script>
+</body>
+</html>
